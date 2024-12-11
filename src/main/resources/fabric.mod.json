@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "berbersbrews",
+	"version": "${version}",
+	"name": "Berber's Brews",
+	"description": "This mod adds new custom potions and effects.",
+	"authors": [
+		"Berber"
+	],
+	"contact": {
+		"homepage": "https://www.youtube.com/@berber6084",
+		"sources": "https://github.com/FabricMC/berbersbrews"
+	},
+	"license": "MIT",
+	"icon": "assets/berbersbrews/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.berber.berbersbrews.BerbersBrews"
+		],
+		"fabric-datagen": [
+			"net.berber.berbersbrews.BerbersBrewsDataGenerator"
+		],
+		"client": [
+			"net.berber.berbersbrews.BerbersBrewsClient"
+		]
+	},
+	"mixins": [
+		"berbersbrews.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.5",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
