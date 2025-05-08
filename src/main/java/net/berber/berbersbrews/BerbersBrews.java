@@ -2,6 +2,7 @@ package net.berber.berbersbrews;
 
 import net.berber.berbersbrews.effect.ModEffects;
 import net.berber.berbersbrews.potion.ModPotions;
+import net.berber.berbersbrews.config.ModConfigs;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ public class BerbersBrews implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModConfigs.registerConfigs();
 		ModEffects.registerEffects();
 		ModPotions.registerPotions();
 	}
