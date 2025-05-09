@@ -7,6 +7,7 @@ public class ModConfigs {
     public static SimpleConfig CONFIG;
     private static ModConfigProvider configs;
     public static boolean RECIPES_ENABLED;
+    public static boolean PERCEPTION_RECIPES_ENABLED;
 
     public static void registerConfigs() {
         configs = new ModConfigProvider();
@@ -19,10 +20,12 @@ public class ModConfigs {
 
     private static void createConfigs() {
         configs.addKeyValuePair(new Pair<>("recipes.enabled", "true"), "boolean");
+        configs.addKeyValuePair(new Pair<>("perceptionrecipes.enabled", "true"), "boolean");
     }
 
     private static void assignConfigs() {
         RECIPES_ENABLED = CONFIG.getOrDefault("recipes.enabled", true);
+        PERCEPTION_RECIPES_ENABLED = CONFIG.getOrDefault("perceptionrecipes.enabled", true);
         System.out.println("All " + configs.getConfigsList().size() + " have been set properly!");
     }
 }

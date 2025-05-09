@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
 	"id": "berbersbrews",
-	"version": "0.4.1",
+	"version": "${version}",
 	"name": "Berber's Brews",
 	"description": "This mod adds new custom potions and effects.",
 	"authors": [
