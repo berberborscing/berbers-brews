@@ -1,5 +1,6 @@
 package net.berber.berbersbrews.potion;
 
+import net.berber.berbersbrews.config.ModConfigs;
 import net.berber.berbersbrews.effect.ModEffects;
 import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -202,71 +203,72 @@ public class ModPotions {
 
     //Brewing recipes
     private static void registerPotionRecipes() {
+        if(ModConfigs.RECIPES_ENABLED) {
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.CHORUS_FRUIT, ModPotions.TELEPORT_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.TELEPORT_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_TELEPORT_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.TELEPORT_POTION, Items.FERMENTED_SPIDER_EYE, ModPotions.RECALL_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.CHORUS_FRUIT, ModPotions.TELEPORT_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.TELEPORT_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_TELEPORT_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.TELEPORT_POTION, Items.FERMENTED_SPIDER_EYE, ModPotions.RECALL_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.RECALL_POTION, Items.CLOCK, ModPotions.RETURN_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.RETURN_POTION, Items.REDSTONE, ModPotions.LONG_RETURN_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.RECALL_POTION, Items.CLOCK, ModPotions.RETURN_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.RETURN_POTION, Items.REDSTONE, ModPotions.LONG_RETURN_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.ECHO_SHARD, ModPotions.SILENCE_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.SILENCE_POTION, Items.REDSTONE, ModPotions.LONG_SILENCE_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.ECHO_SHARD, ModPotions.SILENCE_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.SILENCE_POTION, Items.REDSTONE, ModPotions.LONG_SILENCE_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.GLOW_BERRIES, ModPotions.PRIVY_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.PRIVY_POTION, Items.REDSTONE, ModPotions.LONG_PRIVY_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.PRIVY_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_PRIVY_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.GLOW_BERRIES, ModPotions.PRIVY_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.PRIVY_POTION, Items.REDSTONE, ModPotions.LONG_PRIVY_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.PRIVY_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_PRIVY_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.ENDER_PEARL, ModPotions.REACH_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REACH_POTION, Items.REDSTONE, ModPotions.LONG_REACH_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REACH_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_REACH_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.ENDER_PEARL, ModPotions.REACH_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REACH_POTION, Items.REDSTONE, ModPotions.LONG_REACH_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REACH_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_REACH_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.SLIME_BALL, ModPotions.ABLE_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REACH_POTION, Items.REDSTONE, ModPotions.LONG_ABLE_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REACH_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_ABLE_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.SLIME_BALL, ModPotions.ABLE_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REACH_POTION, Items.REDSTONE, ModPotions.LONG_ABLE_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REACH_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_ABLE_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.AMETHYST_SHARD, ModPotions.AMETHYSTPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.AMETHYSTPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_AMETHYSTPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.AMETHYSTPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_AMETHYSTPERCEPTION_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.AMETHYST_SHARD, ModPotions.AMETHYSTPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.AMETHYSTPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_AMETHYSTPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.AMETHYSTPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_AMETHYSTPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.COAL, ModPotions.COALPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.COALPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_COALPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.COALPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_COALPERCEPTION_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.COAL, ModPotions.COALPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.COALPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_COALPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.COALPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_COALPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.RAW_COPPER, ModPotions.COPPERPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.COPPERPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_COPPERPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.COPPERPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_COPPERPERCEPTION_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.RAW_COPPER, ModPotions.COPPERPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.COPPERPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_COPPERPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.COPPERPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_COPPERPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.DIAMOND, ModPotions.DIAMONDPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.DIAMONDPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_DIAMONDPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.DIAMONDPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_DIAMONDPERCEPTION_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.DIAMOND, ModPotions.DIAMONDPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.DIAMONDPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_DIAMONDPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.DIAMONDPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_DIAMONDPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.EMERALD, ModPotions.EMERALDPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.EMERALDPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_EMERALDPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.EMERALDPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_EMERALDPERCEPTION_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.EMERALD, ModPotions.EMERALDPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.EMERALDPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_EMERALDPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.EMERALDPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_EMERALDPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.RAW_GOLD, ModPotions.GOLDPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.GOLDPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_GOLDPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.GOLDPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_GOLDPERCEPTION_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.RAW_GOLD, ModPotions.GOLDPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.GOLDPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_GOLDPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.GOLDPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_GOLDPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.RAW_IRON, ModPotions.IRONPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.IRONPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_IRONPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.IRONPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_IRONPERCEPTION_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.RAW_IRON, ModPotions.IRONPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.IRONPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_IRONPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.IRONPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_IRONPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.LAPIS_LAZULI, ModPotions.LAPISPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.LAPISPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_LAPISPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.LAPISPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_LAPISPERCEPTION_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.LAPIS_LAZULI, ModPotions.LAPISPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.LAPISPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_LAPISPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.LAPISPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_LAPISPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.QUARTZ, ModPotions.MISCPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.MISCPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_MISCPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.MISCPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_MISCPERCEPTION_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.QUARTZ, ModPotions.MISCPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.MISCPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_MISCPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.MISCPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_MISCPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.NETHERITE_SCRAP, ModPotions.NETHERITEPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.NETHERITEPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_NETHERITEPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.NETHERITEPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_NETHERITEPERCEPTION_POTION);});
 
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.NETHERITE_SCRAP, ModPotions.NETHERITEPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.NETHERITEPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_NETHERITEPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.NETHERITEPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_NETHERITEPERCEPTION_POTION);});
-
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.REDSTONE, ModPotions.REDSTONEPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REDSTONEPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_REDSTONEPERCEPTION_POTION);});
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REDSTONEPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_REDSTONEPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.THICK, Items.REDSTONE, ModPotions.REDSTONEPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REDSTONEPERCEPTION_POTION, Items.REDSTONE, ModPotions.LONG_REDSTONEPERCEPTION_POTION);});
+            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REDSTONEPERCEPTION_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_REDSTONEPERCEPTION_POTION);});
+        }
     }
 }
