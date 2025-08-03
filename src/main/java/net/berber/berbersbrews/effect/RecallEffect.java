@@ -5,6 +5,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -27,6 +28,13 @@ public class RecallEffect extends StatusEffect {
             Vec3d vec3d = blockPos.toBottomCenterPos();
             if (entity instanceof ServerPlayerEntity serverPlayerEntity) {
                 entity.teleportTo(serverPlayerEntity.getRespawnTarget(false, TeleportTarget.NO_OP));
+            } else if (entity instanceof TameableEntity tameableEntity && tameableEntity.isTamed()) {
+                //If the affected pet isn't sitting, make it sit so it doesn't bug out the teleportation
+                if(!tameableEntity.isSitting()) { tameableEntity.setSitting(true); }
+                ServerPlayerEntity owner = (ServerPlayerEntity) tameableEntity.getOwner();
+                //Prevents a null pointer crash. Can only recall pets if their owner is currently online.
+                if(owner != null)
+                    entity.teleportTo(owner.getRespawnTarget(false, TeleportTarget.NO_OP));
             } else {
                 vec3d = entity.getWorldSpawnPos((ServerWorld) entity.getEntityWorld(), blockPos).toBottomCenterPos();
                 entity.teleport(vec3d.x, vec3d.y, vec3d.z, false);
@@ -45,6 +53,12 @@ public class RecallEffect extends StatusEffect {
             Vec3d vec3d = blockPos.toBottomCenterPos();
             if (entity instanceof ServerPlayerEntity serverPlayerEntity) {
                 entity.teleportTo(serverPlayerEntity.getRespawnTarget(false, TeleportTarget.NO_OP));
+            } else if (entity instanceof TameableEntity tameableEntity && tameableEntity.isTamed()) {
+                //If the affected pet isn't sitting, make it sit so it doesn't bug out the teleportation
+                if(!tameableEntity.isSitting()) { tameableEntity.setSitting(true); }
+                ServerPlayerEntity owner = (ServerPlayerEntity) tameableEntity.getOwner();
+                if(owner != null)
+                    entity.teleportTo(owner.getRespawnTarget(false, TeleportTarget.NO_OP));
             } else {
                 vec3d = entity.getWorldSpawnPos((ServerWorld) entity.getEntityWorld(), blockPos).toBottomCenterPos();
                 entity.teleport(vec3d.x, vec3d.y, vec3d.z, false);
