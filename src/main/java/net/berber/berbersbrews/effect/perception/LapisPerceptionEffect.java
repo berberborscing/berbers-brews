@@ -1,5 +1,6 @@
 package net.berber.berbersbrews.effect.perception;
 
+import net.berber.berbersbrews.BerbersBrews;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
@@ -12,6 +13,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import static net.berber.berbersbrews.config.ModConfigs.PERCEPTION_SOUND;
 
 public class LapisPerceptionEffect extends StatusEffect {
     public LapisPerceptionEffect(StatusEffectCategory statusEffectCategory, int color) {
@@ -36,13 +39,20 @@ public class LapisPerceptionEffect extends StatusEffect {
                 for (int y = -range; y <= range; y++) {
                     for (int z = -range; z <= range; z++) {
                         BlockPos targetPos = playerPos.add(x, y, z);
-                        Block block = world.getBlockState(targetPos).getBlock();
-                        float pitch = (float) Math.pow(2, (16 - playerPos.getSquaredDistance(targetPos.toCenterPos())) / 16);
-                        // Get the block's ID and check against the ore tag
-                        Identifier blockId = Registries.BLOCK.getId(block);
-                        if (block.getRegistryEntry().isIn(lapisOreTag) || block == Blocks.LAPIS_BLOCK)
-                        {
-                            world.playSound(entity, targetPos, SoundEvents.BLOCK_NOTE_BLOCK_FLUTE.value(), SoundCategory.BLOCKS, 1f, pitch);
+                        //Get the distance between player and this block. Don't bother running anything if > 16.
+                        double distance = BerbersBrews.calcDistance(entity.getBlockPos(), targetPos);
+                        if(distance <= 16) {
+                            Block block = world.getBlockState(targetPos).getBlock();
+                            float pitch = 2 - ((float) distance / 10f);
+                            // Get the block's ID and check against the ore tag
+                            Identifier blockId = Registries.BLOCK.getId(block);
+                            if (block.getRegistryEntry().isIn(lapisOreTag) || block == Blocks.LAPIS_BLOCK) {
+                                //Ping the ore faster the closer it is
+                                if (entity.getWorld().getTime() % ((int) distance + 2) == 0) {
+                                    //Use the configured sound
+                                    world.playSound(entity, targetPos, BerbersBrews.getPerceptionSound(PERCEPTION_SOUND), SoundCategory.BLOCKS, 1f, pitch);
+                                }
+                            }
                         }
                     }
                 }
@@ -54,6 +64,6 @@ public class LapisPerceptionEffect extends StatusEffect {
 
     @Override
     public boolean canApplyUpdateEffect(int d, int p) {
-        return d % 15 == 0;
+        return true;
     }
 }

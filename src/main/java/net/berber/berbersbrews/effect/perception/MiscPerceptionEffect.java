@@ -1,5 +1,6 @@
 package net.berber.berbersbrews.effect.perception;
 
+import net.berber.berbersbrews.BerbersBrews;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
@@ -12,6 +13,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import static net.berber.berbersbrews.config.ModConfigs.PERCEPTION_SOUND;
 
 public class MiscPerceptionEffect extends StatusEffect {
     public MiscPerceptionEffect(StatusEffectCategory statusEffectCategory, int color) {
@@ -44,22 +47,33 @@ public class MiscPerceptionEffect extends StatusEffect {
                 for (int y = -range; y <= range; y++) {
                     for (int z = -range; z <= range; z++) {
                         BlockPos targetPos = playerPos.add(x, y, z);
-                        Block block = world.getBlockState(targetPos).getBlock();
-                        float pitch = (float) Math.pow(2, (16 - playerPos.getSquaredDistance(targetPos.toCenterPos())) / 16);
-                        // Get the block's ID and check against the ore tag
-                        Identifier blockId = Registries.BLOCK.getId(block);
-                        //The following code here is to except these ores from being detected.
-                        if(block == Blocks.ANCIENT_DEBRIS) {  }
-                        else if (block.getRegistryEntry().isIn(diamondOreTag)) { }
-                        else if (block.getRegistryEntry().isIn(emeraldOreTag)) { }
-                        else if (block.getRegistryEntry().isIn(goldOreTag)) { }
-                        else if (block.getRegistryEntry().isIn(lapisOreTag)) { }
-                        else if (block.getRegistryEntry().isIn(ironOreTag)) { }
-                        else if (block.getRegistryEntry().isIn(redstoneOreTag)) { }
-                        else if (block.getRegistryEntry().isIn(coalOreTag)) { }
-                        else if (block.getRegistryEntry().isIn(copperOreTag)) { }
-                        //This covers all non-vanilla blocks marked as ores. Includes Nether Quartz ore, evolution stone ore from Cobblemon, etc.
-                        else if (block.getRegistryEntry().isIn(oreTag) || block == Blocks.CHEST) { world.playSound(entity, targetPos, SoundEvents.BLOCK_NOTE_BLOCK_HARP.value(), SoundCategory.BLOCKS, 1f, pitch); }
+                        //Get the distance between player and this block. Don't bother running anything if > 16.
+                        double distance = BerbersBrews.calcDistance(entity.getBlockPos(), targetPos);
+                        if(distance <= 16) {
+                            Block block = world.getBlockState(targetPos).getBlock();
+                            float pitch = 2 - ((float) distance / 10f);
+                            // Get the block's ID and check against the ore tag
+                            Identifier blockId = Registries.BLOCK.getId(block);
+                            //The following code here is to except these ores from being detected.
+                            if (block == Blocks.ANCIENT_DEBRIS) {
+                            } else if (block.getRegistryEntry().isIn(diamondOreTag)) {
+                            } else if (block.getRegistryEntry().isIn(emeraldOreTag)) {
+                            } else if (block.getRegistryEntry().isIn(goldOreTag)) {
+                            } else if (block.getRegistryEntry().isIn(lapisOreTag)) {
+                            } else if (block.getRegistryEntry().isIn(ironOreTag)) {
+                            } else if (block.getRegistryEntry().isIn(redstoneOreTag)) {
+                            } else if (block.getRegistryEntry().isIn(coalOreTag)) {
+                            } else if (block.getRegistryEntry().isIn(copperOreTag)) {
+                            }
+                            //This covers all non-vanilla blocks marked as ores. Includes Nether Quartz ore, evolution stone ore from Cobblemon, etc.
+                            else if (block.getRegistryEntry().isIn(oreTag) || block == Blocks.CHEST) {
+                                //Ping the ore faster the closer it is
+                                if (entity.getWorld().getTime() % ((int) distance + 2) == 0) {
+                                    //Use the configured sound
+                                    world.playSound(entity, targetPos, BerbersBrews.getPerceptionSound(PERCEPTION_SOUND), SoundCategory.BLOCKS, 1f, pitch);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -70,6 +84,6 @@ public class MiscPerceptionEffect extends StatusEffect {
 
     @Override
     public boolean canApplyUpdateEffect(int d, int p) {
-        return d % 15 == 0;
+        return true;
     }
 }

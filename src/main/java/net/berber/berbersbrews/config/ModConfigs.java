@@ -13,6 +13,7 @@ public class ModConfigs {
     public static boolean REACH_RECIPES_ENABLED;
     public static boolean ABILITY_RECIPES_ENABLED;
     public static boolean PERCEPTION_RECIPES_ENABLED;
+    public static String PERCEPTION_SOUND;
 
     public static void registerConfigs() {
         configs = new ModConfigProvider();
@@ -31,6 +32,7 @@ public class ModConfigs {
         configs.addKeyValuePair(new Pair<>("recipes.reach.enabled", "true"), "boolean");
         configs.addKeyValuePair(new Pair<>("recipes.ability.enabled", "true"), "boolean");
         configs.addKeyValuePair(new Pair<>("recipes.perception.enabled", "true"), "boolean");
+        configs.addKeyValuePair(new Pair<>("sound.perception", "bit"), "string");
     }
 
     private static void assignConfigs() {
@@ -41,6 +43,7 @@ public class ModConfigs {
         REACH_RECIPES_ENABLED = CONFIG.getOrDefault("recipes.reach.enabled", true);
         ABILITY_RECIPES_ENABLED = CONFIG.getOrDefault("recipes.ability.enabled", true);
         PERCEPTION_RECIPES_ENABLED = CONFIG.getOrDefault("recipes.perception.enabled", true);
+        PERCEPTION_SOUND = CONFIG.getOrDefault("sound.perception", "bit");
         System.out.println("All " + configs.getConfigsList().size() + " have been set properly!");
     }
 }
