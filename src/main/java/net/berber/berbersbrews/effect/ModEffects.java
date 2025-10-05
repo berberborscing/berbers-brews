@@ -19,6 +19,7 @@ public class ModEffects {
     public static RegistryEntry<StatusEffect> REACH;
     public static RegistryEntry<StatusEffect> ABLE;
     public static RegistryEntry<StatusEffect> RETURN;
+    public static RegistryEntry<StatusEffect> SONAR;
 
     //Perception effects
     public static RegistryEntry<StatusEffect> AMETHYSTPERCEPTION;
@@ -51,6 +52,8 @@ public class ModEffects {
                         .addAttributeModifier(EntityAttributes.GENERIC_STEP_HEIGHT, Identifier.ofVanilla("able"), 2f, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         RETURN = Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(BerbersBrews.MOD_ID, "return"),
                 new ReturnEffect(StatusEffectCategory.NEUTRAL, 16777130));
+        SONAR = Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(BerbersBrews.MOD_ID, "sonar"),
+                new SonarEffect(StatusEffectCategory.BENEFICIAL, 56495));
 
         AMETHYSTPERCEPTION = Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(BerbersBrews.MOD_ID, "amethystperception"),
                 new AmethystPerceptionEffect(StatusEffectCategory.BENEFICIAL, 11767539));

@@ -7,6 +7,7 @@
   "effect.berbersbrews.reach": "Reach",
   "effect.berbersbrews.able": "Able",
   "effect.berbersbrews.return": "Return",
+  "effect.berbersbrews.sonar": "Intuition",
 
   "effect.berbersbrews.amethystperception": "Perception",
   "effect.berbersbrews.coalperception": "Perception",
@@ -99,6 +100,16 @@
   "item.minecraft.splash_potion.effect.strong_able_potion": "Splash Potion of Ability",
   "item.minecraft.lingering_potion.effect.strong_able_potion": "Lingering Potion of Ability",
   "item.minecraft.tipped_arrow.effect.strong_able_potion": "Arrow of Ability",
+
+  "item.minecraft.potion.effect.sonar_potion": "Potion of Intuition",
+  "item.minecraft.splash_potion.effect.sonar_potion": "Splash Potion of Intuition",
+  "item.minecraft.lingering_potion.effect.sonar_potion": "Lingering Potion of Intuition",
+  "item.minecraft.tipped_arrow.effect.sonar_potion": "Arrow of Intuition",
+
+  "item.minecraft.potion.effect.long_sonar_potion": "Potion of Intuition",
+  "item.minecraft.splash_potion.effect.long_sonar_potion": "Splash Potion of Intuition",
+  "item.minecraft.lingering_potion.effect.long_sonar_potion": "Lingering Potion of Intuition",
+  "item.minecraft.tipped_arrow.effect.long_sonar_potion": "Arrow of Intuition",
 
   "item.minecraft.potion.effect.coalperception_potion": "Potion of Perception [Coal]",
   "item.minecraft.splash_potion.effect.coalperception_potion": "Splash Potion of Perception [Coal]",
