@@ -8,6 +8,7 @@
   "effect.berbersbrews.able": "Able",
   "effect.berbersbrews.return": "Return",
   "effect.berbersbrews.sonar": "Intuition",
+  "effect.berbersbrews.peace": "Peace",
 
   "effect.berbersbrews.amethystperception": "Perception",
   "effect.berbersbrews.coalperception": "Perception",
@@ -110,6 +111,16 @@
   "item.minecraft.splash_potion.effect.long_sonar_potion": "Splash Potion of Intuition",
   "item.minecraft.lingering_potion.effect.long_sonar_potion": "Lingering Potion of Intuition",
   "item.minecraft.tipped_arrow.effect.long_sonar_potion": "Arrow of Intuition",
+
+  "item.minecraft.potion.effect.peace_potion": "Potion of Peace",
+  "item.minecraft.splash_potion.effect.peace_potion": "Splash Potion of Peace",
+  "item.minecraft.lingering_potion.effect.peace_potion": "Lingering Potion of Peace",
+  "item.minecraft.tipped_arrow.effect.peace_potion": "Arrow of Peace",
+
+  "item.minecraft.potion.effect.long_peace_potion": "Potion of Peace",
+  "item.minecraft.splash_potion.effect.long_peace_potion": "Splash Potion of Peace",
+  "item.minecraft.lingering_potion.effect.long_peace_potion": "Lingering Potion of Peace",
+  "item.minecraft.tipped_arrow.effect.long_peace_potion": "Arrow of Peace",
 
   "item.minecraft.potion.effect.coalperception_potion": "Potion of Perception [Coal]",
   "item.minecraft.splash_potion.effect.coalperception_potion": "Splash Potion of Perception [Coal]",

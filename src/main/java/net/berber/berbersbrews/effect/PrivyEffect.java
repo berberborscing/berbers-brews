@@ -19,7 +19,6 @@ public class PrivyEffect extends StatusEffect {
     public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         amplifier++;
         double maxDist = 16 * amplifier;
-        //entity.setPos(entity.getX(), entity.getY()+1, entity.getZ());
         List<Entity> nearbyList = entity.getWorld().getOtherEntities(entity,
                 new Box(entity.getX()-maxDist, entity.getY()-maxDist, entity.getZ()-maxDist,
                         entity.getX()+maxDist, entity.getY()+maxDist, entity.getZ()+maxDist));

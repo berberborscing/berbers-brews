@@ -33,12 +33,11 @@ public class ModPotions {
     public static RegistryEntry<Potion> LONG_REACH_POTION;
     public static RegistryEntry<Potion> STRONG_REACH_POTION;
 
-    public static RegistryEntry<Potion> ABLE_POTION;
-    public static RegistryEntry<Potion> LONG_ABLE_POTION;
-    public static RegistryEntry<Potion> STRONG_ABLE_POTION;
-
     public static RegistryEntry<Potion> SONAR_POTION;
     public static RegistryEntry<Potion> LONG_SONAR_POTION;
+
+    public static RegistryEntry<Potion> PEACE_POTION;
+    public static RegistryEntry<Potion> LONG_PEACE_POTION;
 
     public static RegistryEntry<Potion> AMETHYSTPERCEPTION_POTION;
     public static RegistryEntry<Potion> LONG_AMETHYSTPERCEPTION_POTION;
@@ -117,17 +116,15 @@ public class ModPotions {
         STRONG_REACH_POTION = Registry.registerReference(Registries.POTION, Identifier.of(BerbersBrews.MOD_ID, "strong_reach_potion"),
                 new Potion(new StatusEffectInstance(ModEffects.REACH, 1800, 1)));
 
-        ABLE_POTION = Registry.registerReference(Registries.POTION, Identifier.of(BerbersBrews.MOD_ID, "able_potion"),
-                new Potion(new StatusEffectInstance(ModEffects.ABLE, 3600, 0)));
-        LONG_ABLE_POTION = Registry.registerReference(Registries.POTION, Identifier.of(BerbersBrews.MOD_ID, "long_able_potion"),
-                new Potion(new StatusEffectInstance(ModEffects.ABLE, 9600, 0)));
-        STRONG_ABLE_POTION = Registry.registerReference(Registries.POTION, Identifier.of(BerbersBrews.MOD_ID, "strong_able_potion"),
-                new Potion(new StatusEffectInstance(ModEffects.ABLE, 1800, 1)));
-
         SONAR_POTION = Registry.registerReference(Registries.POTION, Identifier.of(BerbersBrews.MOD_ID, "sonar_potion"),
                 new Potion(new StatusEffectInstance(ModEffects.SONAR, 3600, 0)));
         LONG_SONAR_POTION = Registry.registerReference(Registries.POTION, Identifier.of(BerbersBrews.MOD_ID, "long_sonar_potion"),
                 new Potion(new StatusEffectInstance(ModEffects.SONAR, 9600, 0)));
+
+        PEACE_POTION = Registry.registerReference(Registries.POTION, Identifier.of(BerbersBrews.MOD_ID, "peace_potion"),
+                new Potion(new StatusEffectInstance(ModEffects.PEACE, 3600, 0)));
+        LONG_PEACE_POTION = Registry.registerReference(Registries.POTION, Identifier.of(BerbersBrews.MOD_ID, "long_peace_potion"),
+                new Potion(new StatusEffectInstance(ModEffects.PEACE, 9600, 0)));
 
         AMETHYSTPERCEPTION_POTION = Registry.registerReference(Registries.POTION, Identifier.of(BerbersBrews.MOD_ID, "amethystperception_potion"),
                 new Potion(new StatusEffectInstance(ModEffects.AMETHYSTPERCEPTION, 1800, 0)));
@@ -238,15 +235,14 @@ public class ModPotions {
             FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.REACH_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_REACH_POTION);});
             }
 
-            if(ModConfigs.ABILITY_RECIPES_ENABLED) {
-            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.SLIME_BALL, ModPotions.ABLE_POTION);});
-            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.ABLE_POTION, Items.REDSTONE, ModPotions.LONG_ABLE_POTION);});
-            FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.ABLE_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_ABLE_POTION);});
-            }
-
             if(ModConfigs.SONAR_RECIPES_ENABLED) {
                 FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.PRISMARINE_CRYSTALS, ModPotions.SONAR_POTION);});
                 FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.SONAR_POTION, Items.REDSTONE, ModPotions.LONG_SONAR_POTION);});
+            }
+
+            if(ModConfigs.PEACE_RECIPES_ENABLED) {
+                FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.SLIME_BALL, ModPotions.PEACE_POTION);});
+                FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.PEACE_POTION, Items.REDSTONE, ModPotions.LONG_PEACE_POTION);});
             }
 
             if(ModConfigs.PERCEPTION_RECIPES_ENABLED) {

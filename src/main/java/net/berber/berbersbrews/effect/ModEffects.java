@@ -17,9 +17,9 @@ public class ModEffects {
     public static RegistryEntry<StatusEffect> SILENCE;
     public static RegistryEntry<StatusEffect> PRIVY;
     public static RegistryEntry<StatusEffect> REACH;
-    public static RegistryEntry<StatusEffect> ABLE;
     public static RegistryEntry<StatusEffect> RETURN;
     public static RegistryEntry<StatusEffect> SONAR;
+    public static RegistryEntry<StatusEffect> PEACE;
 
     //Perception effects
     public static RegistryEntry<StatusEffect> AMETHYSTPERCEPTION;
@@ -47,13 +47,12 @@ public class ModEffects {
                 new ReachEffect(StatusEffectCategory.BENEFICIAL, 6579255)
                         .addAttributeModifier(EntityAttributes.PLAYER_BLOCK_INTERACTION_RANGE, Identifier.ofVanilla("block_reach"), 0.5f, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE)
                         .addAttributeModifier(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE, Identifier.ofVanilla("entity_reach"), 0.5f, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        ABLE = Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(BerbersBrews.MOD_ID, "able"),
-                new AbleEffect(StatusEffectCategory.BENEFICIAL, 3669815)
-                        .addAttributeModifier(EntityAttributes.GENERIC_STEP_HEIGHT, Identifier.ofVanilla("able"), 2f, EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         RETURN = Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(BerbersBrews.MOD_ID, "return"),
                 new ReturnEffect(StatusEffectCategory.NEUTRAL, 16777130));
         SONAR = Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(BerbersBrews.MOD_ID, "sonar"),
                 new SonarEffect(StatusEffectCategory.BENEFICIAL, 56495));
+        PEACE = Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(BerbersBrews.MOD_ID, "peace"),
+                new PeaceEffect(StatusEffectCategory.BENEFICIAL, 12618239));
 
         AMETHYSTPERCEPTION = Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(BerbersBrews.MOD_ID, "amethystperception"),
                 new AmethystPerceptionEffect(StatusEffectCategory.BENEFICIAL, 11767539));
