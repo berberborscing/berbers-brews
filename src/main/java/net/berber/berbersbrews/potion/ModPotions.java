@@ -224,7 +224,7 @@ public class ModPotions {
             }
 
             if(ModConfigs.CLAIRVOYANCE_RECIPES_ENABLED) {
-                FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.GLOW_BERRIES, ModPotions.PRIVY_POTION);});
+                FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(Potions.AWKWARD, Items.ENDER_EYE, ModPotions.PRIVY_POTION);});
                 FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.PRIVY_POTION, Items.REDSTONE, ModPotions.LONG_PRIVY_POTION);});
                 FabricBrewingRecipeRegistryBuilder.BUILD.register(builder->{builder.registerPotionRecipe(ModPotions.PRIVY_POTION, Items.GLOWSTONE_DUST, ModPotions.STRONG_PRIVY_POTION);});
             }

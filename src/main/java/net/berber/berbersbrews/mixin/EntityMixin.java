@@ -3,10 +3,7 @@ package net.berber.berbersbrews.mixin;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 
-import net.minecraft.entity.mob.HoglinEntity;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.mob.WaterCreatureEntity;
+import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -43,17 +40,20 @@ public abstract class EntityMixin {
     }
 
     //Assigns highlighting colors for the Potion of Privy.
-    @Inject(method="getTeamColorValue", at = @At(value= "TAIL"))
-    private int setTeams(CallbackInfoReturnable<Boolean> info) {
-        if(((Object)this instanceof HostileEntity)) { return 16711680; } //Hostile mobs will always be marked red
-        else if((Object)this instanceof HoglinEntity) { return 16711680; } //Prevents hoglins from being identified as allies
-        else if((Object)this instanceof PassiveEntity) { return 65280; } //Passive mobs will always be marked green
-        else if((Object)this instanceof WaterCreatureEntity) { return 65280; } //Prevents fish from being identified as enemies
-        else if((Object)this instanceof GolemEntity) { return 65280; } //Prevents golems from being identified as enemies
-        else if((Object)this instanceof AllayEntity) { return 65280; } //Prevents allays from being identified as enemies
-        else if((Object)this instanceof BatEntity) { return 65280; } //Prevents bats from being identified as enemies
-        else if((Object)this instanceof MobEntity) { return 16711680; }  //Covers ghasts and phantoms not being identified as enemies
-        else { return 16777215; }
+    @Inject(method="getTeamColorValue", at = @At(value= "TAIL"), cancellable = true)
+    private void setTeams(CallbackInfoReturnable<Integer> info) {
+        Entity entity = (Entity)(Object)this;
+
+        if(entity instanceof HostileEntity) { info.setReturnValue(16711680); } //Hostile mobs will always be marked red
+        else if(entity instanceof HoglinEntity) { info.setReturnValue(16711680); } //Prevents hoglins from being identified as allies
+        else if(entity instanceof PassiveEntity) { info.setReturnValue(65280); } //Passive mobs will always be marked green
+        else if(entity instanceof WaterCreatureEntity) { info.setReturnValue(65280); } //Prevents fish from being identified as enemies
+        else if(entity instanceof ShulkerEntity) { info.setReturnValue(16711680); } //Fixes a bug where Shulkers were marked as friendly
+        else if(entity instanceof GolemEntity) { info.setReturnValue(65280); } //Prevents golems from being identified as enemies
+        else if(entity instanceof AllayEntity) { info.setReturnValue(65280); } //Prevents allays from being identified as enemies
+        else if(entity instanceof BatEntity) { info.setReturnValue(65280); } //Prevents bats from being identified as enemies
+        else if(entity instanceof MobEntity) { info.setReturnValue(16711680); }  //Covers ghasts and phantoms not being identified as enemies
+        else { info.setReturnValue(16777215); }
     }
 
 }
